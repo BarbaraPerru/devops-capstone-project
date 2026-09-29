@@ -54,7 +54,7 @@ class TestAccountService(TestCase):
         """It should not allow an unsupported method"""
         resp = self.client.put(BASE_URL)
         self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-    
+
     def test_get_account_list(self):
         """It should Get a list of Accounts"""
         self._create_accounts(5)
@@ -177,7 +177,7 @@ class TestAccountService(TestCase):
 
         updated_account = resp.get_json()
         self.assertEqual(updated_account["name"], "Updated Name")
-    
+
     def test_update_account_not_found(self):
         """It should not Update an Account that is not found"""
         account_data = {
@@ -199,7 +199,7 @@ class TestAccountService(TestCase):
             resp.status_code,
             status.HTTP_204_NO_CONTENT
         )
-    
+
     def test_delete_account_not_found(self):
         """It should return 204 when deleting an Account that does not exist"""
         resp = self.client.delete(f"{BASE_URL}/0")
